@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="myjpetstore.domain.Account" table="account" lazy="false">
+                <id name="username" type="text" column="userid">
+                        <generator class="assigned"/>
+                </id>
+                <property name="email" type="text" column="email" not-null="true" />
+                <property name="firstName" type="text" column="firstname" not-null="true" />
+                <property name="lastName" type="text" column="lastname" not-null="true" />
+                <property name="status" type="text" column="status" not-null="true" />
+                <property name="address1" type="text" column="addr1" not-null="true" />
+                <property name="address2" type="text" column="addr2" not-null="true" />
+                <property name="city" type="text" column="city" not-null="true" />
+                <property name="state" type="text" column="state" not-null="true" />
+                <property name="zip" type="text" column="zip" not-null="true" />
+                <property name="country" type="text" column="country" not-null="true" />
+                <property name="phone" type="text" column="phone" not-null="true" />
+        </class>
+</hibernate-mapping>

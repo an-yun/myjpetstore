@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="myjpetstore.domain.LineItem" table="lineitem" lazy="false">
+                <id name="orderId" type="int" column="orderid">
+                        <generator class="assigned"/>
+                </id>
+                <property name="lineNumber" type="int" column="linenum"/>
+                <property name="itemId" type="text" column="itemid"/>
+                <property name="quantity" type="int" column="quantity"/>
+                <property name="unitPrice" type="big_decimal" column="unitprice"/>
+        </class>
+</hibernate-mapping>

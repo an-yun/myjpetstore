@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+        <package name="account" extends="struts-default">
+                <interceptors>
+                        <interceptor name="logInterceptor" class="myjpetstore.web.interceptors.LogInterceptor"/>
+                        <interceptor-stack name="log">
+                                <interceptor-ref name="defaultStack"/>
+                                <interceptor-ref name="logInterceptor"/>
+                        </interceptor-stack>
+                </interceptors>
+                
+                <default-interceptor-ref name="log">
+                </default-interceptor-ref>
+                <action name="main" class="myjpetstore.web.action.catalog" method="main">
+                        <result name="success">/WEB-INF/jsp/catalog/Main.jsp</result>
+                </action>
+                <action name="viewCategory" class="myjpetstore.web.action.catalog" method="ViewCategory">
+                        <result name="success">/WEB-INF/jsp/catalog/Category.jsp</result>
+                </action>
+                <action name="viewProduct" class="myjpetstore.web.action.catalog" method="viewProduct">
+                        <result name="success">/WEB-INF/jsp/catalog/Product.jsp</result>
+                </action>
+                <action name="viewItem" class="myjpetstore.web.action.catalog" method="viewItem">
+                        <result name="success">/WEB-INF/jsp/catalog/Item.jsp</result>
+                </action>
+                <action name="addItemToCart" class="myjpetstore.web.action.catalog" method="addItemToCart">
+                        <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+                </action>
+                <action name="searchProduct" class="myjpetstore.web.action.catalog" method="searchProduct">
+                        <result name="success">/WEB-INF/jsp/catalog/SearchProducts.jsp</result>
+                </action>
+                <action name="searchSuggest" class="myjpetstore.web.action.catalog" method="searchSuggest">
+                </action>
+                <action name="help" class="myjpetstore.web.action.catalog" method="help">
+                        <result name="success">/WEB-INF/jsp/help.jsp</result>
+                </action>
+                <action name="viewCart" class="myjpetstore.web.action.cart" method="viewCart">
+                        <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+                </action>
+                <action name="updateCartQuantities" class="myjpetstore.web.action.cart" method="updateCartQuantities">
+                        <result name="input">/WEB-INF/jsp/common/Error.jsp</result>
+                        <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+                </action>
+                <action name="removedItemFromCart" class="myjpetstore.web.action.cart" method="removedItemFromCart">
+                        <result name="input">/WEB-INF/jsp/common/Error.jsp</result>
+                        <result name="success">/WEB-INF/jsp/cart/Cart.jsp</result>
+                </action>
+                <action name="checkOut" class="myjpetstore.web.action.cart" method="checkOut">
+                        <result name="input">/WEB-INF/jsp/account/SignonForm.jsp</result>
+                        <result name="success">/WEB-INF/jsp/order/NewOrderForm.jsp</result>
+                </action>
+                <action name="signonForm" class="myjpetstore.web.action.account" method="signonForm">
+                        <result name="success">/WEB-INF/jsp/account/SignonForm.jsp</result>
+                </action>
+                <action name="signon" class="myjpetstore.web.action.account" method="signon">
+                        <result name="success">/WEB-INF/jsp/catalog/Main.jsp</result>
+                        <result name="input">/WEB-INF/jsp/account/SignonForm.jsp</result>
+                </action>
+                <action name="newAccountForm" class="myjpetstore.web.action.account" method="newAccountForm">
+                        <result name="success">/WEB-INF/jsp/account/NewAccountForm.jsp</result>
+                </action>
+                <action name="newAccout" class="myjpetstore.web.action.account" method="newAccout">
+                        <result name="success">/WEB-INF/jsp/common/Error.jsp</result>
+                        <result name="input">/WEB-INF/jsp/account/NewAccountForm.jsp</result>
+                        <result name="error">/WEB-INF/jsp/account/NewAccountForm.jsp</result>
+                </action>
+                <action name="myCount" class="myjpetstore.web.action.account" method="myCount">
+                        <result name="success">/WEB-INF/jsp/account/EditAccountForm.jsp</result>
+                </action>
+                <action name="signOff" class="myjpetstore.web.action.account" method="signOff">
+                        <result name="success">/WEB-INF/jsp/catalog/Main.jsp</result>
+                </action>
+                <action name="saveInformation" class="myjpetstore.web.action.account" method="saveInformation">
+                        <result name="success">/WEB-INF/jsp/account/EditAccountForm.jsp</result>
+                        <result name="input">/WEB-INF/jsp/account/EditAccountForm.jsp</result>
+                </action>
+                <action name="usernameIsExist" class="myjpetstore.web.action.account" method="usernameIsExist">
+                </action>
+                <action name="listOrders" class="myjpetstore.web.action.account" method="listOrders">
+                        <result name="success">/WEB-INF/jsp/order/ListOrders.jsp</result>
+                </action>
+                <action name="validationCode" class="myjpetstore.web.action.account" method="validationCode">
+                </action>
+                <action name="continueConfirm" class="myjpetstore.web.action.order" method="continueConfirm">
+                        <result name="success">/WEB-INF/jsp/order/ConfirmOrder.jsp</result>
+                </action>
+                <action name="viewOrder" class="myjpetstore.web.action.order" method="viewOrder">
+                        <result name="success">/WEB-INF/jsp/order/ViewOrder.jsp</result>
+                </action>
+                <action name="viewLog" class="myjpetstore.web.action.account" method="viewLog">
+                        <result name="success">/WEB-INF/jsp/common/ViewLog.jsp</result>
+                </action>
+        </package>
+</struts>

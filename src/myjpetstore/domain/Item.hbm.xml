@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="myjpetstore.domain.Item" table="item" lazy="false">
+                <id name="itemId" type="text" column="itemid">
+                        <generator class="assigned"/>
+                </id>
+                <property name="productId" type="text" column="productid" not-null="true"/>
+                <property name="listPrice" type="text" column="listprice"/>
+                <property name="unitCost" type="big_decimal" column="unitcost"/>
+                <property name="supplierId" type="int" column="supplier"/>
+                <property name="status" type="text" column="status"/>
+                <property name="attribute1" type="text" column="attr1"/>
+                <property name="attribute2" type="text" column="attr2"/>
+                <property name="attribute3" type="text" column="attr3"/>
+                <property name="attribute4" type="text" column="attr4"/>
+                <property name="attribute5" type="text" column="attr5"/>
+
+        </class>
+</hibernate-mapping>
