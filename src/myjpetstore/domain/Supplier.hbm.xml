@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+        <class name="myjpetstore.domain.Supplier" table="supplier" lazy="false">
+                <id name="suppid" type="text" column="username">
+                        <generator class="assigned"/>
+                </id>
+                <property name="name" type="text" column="name"/>
+                <property name="status" type="text" column="status"/>
+                <property name="addr1" type="text" column="addr1"/>
+                <property name="addr2" type="text" column="addr2"/>
+                <property name="city" type="text" column="city"/>
+                <property name="state" type="text" column="state"/>
+                <property name="zip" type="text" column="zip"/>
+                <property name="phone" type="text" column="phone"/>
+        </class>
+</hibernate-mapping>

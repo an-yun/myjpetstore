@@ -14,9 +14,9 @@ public class test {
         Session s = (Session)session.get();
         if(s==null)
             s=sessionFactory.openSession();
-        Log log = new Log("zuo","test");
+        Profile profile = new Profile("b","dfs","",1,1);
         s.beginTransaction();
-        s.save(log);
+        s.save(profile);
         s.getTransaction().commit();
     }
 }

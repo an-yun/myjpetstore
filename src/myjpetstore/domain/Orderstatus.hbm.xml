@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="myjpetstore.domain.Orderstatus" table="orderstatus" lazy="false">
+                <id name="orderid" type="text" column="orderid">
+                        <generator class="assigned"/>
+                </id>
+                <property name="linenum" type="int" column="linenum"/>
+                <property name="timestamp" type="timestamp" column="timestamp"/>
+                <property name="status" type="text" column="status"/>
+        </class>
+</hibernate-mapping>

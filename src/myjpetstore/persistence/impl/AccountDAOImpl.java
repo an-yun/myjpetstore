@@ -1,10 +1,11 @@
 package myjpetstore.persistence.impl;
 
 import myjpetstore.domain.Account;
-import myjpetstore.domain.Category;
 import myjpetstore.domain.Log;
 import myjpetstore.persistence.AccountDAO;
 import myjpetstore.persistence.DBUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,83 +29,37 @@ public class AccountDAOImpl implements AccountDAO{
     private static final String GET_LOGLIST = "SELECT TIME, EVENT FROM LOG";
     @Override
     public Account getAccountByUsername(String username) {
-        Account account = null;
-        try{
-            Connection connection = new DBUtil().getConnection();
-            PreparedStatement pStatement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME);
-            pStatement.setString(1,username);
-            ResultSet resultSet = pStatement.executeQuery();
-            if(resultSet.next())
-            {
-                account = new Account();
-                account.setUsername(resultSet.getString(1));
-                account.setEmail(resultSet.getString(2));
-                account.setFirstName(resultSet.getString(3));
-                account.setLastName(resultSet.getString(4));
-                account.setStatus(resultSet.getString(5));
-                account.setAddress1(resultSet.getString(6));
-                account.setAddress2(resultSet.getString(7));
-                account.setCity(resultSet.getString(8));
-                account.setState(resultSet.getString(9));
-                account.setZip(resultSet.getString(10));
-                account.setCountry(resultSet.getString(11));
-                account.setPhone(resultSet.getString(12));
-                account.setLanguagePreference(resultSet.getString(13));
-                account.setFavouriteCategoryId(resultSet.getString(14));
-                account.setListOption(resultSet.getInt(15) == 1);
-                account.setBannerOption(resultSet.getInt(16) == 1);
-                account.setBannerName(resultSet.getString(17));
-            }
-            DBUtil.closeResultSet(resultSet);
-            DBUtil.closePreparedStatement(pStatement);
-            DBUtil.closeConnection(connection);
+        String hsql = "from Account where username=?";
+        Account account;
+        Session sessionHibernate =  HibernateUtil.getSession();
+        sessionHibernate.beginTransaction();
+        Query query = sessionHibernate.createQuery(hsql);
+        query.setString(0, username);
+        ArrayList<Account> result = (ArrayList<Account>)query.list();
+        if(result.size()==0)    return null;
+        else {
+            account = (Account) sessionHibernate.load(Account.class, username);
+            sessionHibernate.getTransaction().commit();
+            return account;
         }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return account;
     }
 
     @Override
     public Account getAccountByUsernameAndPassword(Account account) {
         Account result_account = null;
-        try{
-            Connection connection = new DBUtil().getConnection();
-            PreparedStatement pStatement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME_AND_PASSWORD);
-            pStatement.setString(1,account.getUsername());
-            pStatement.setString(2,account.getPassword());
-            ResultSet resultSet = pStatement.executeQuery();
-            if(resultSet.next())
-            {
-                result_account = new Account();
-                result_account.setUsername(resultSet.getString(1));
-                result_account.setPassword(account.getPassword());
-                result_account.setEmail(resultSet.getString(2));
-                result_account.setFirstName(resultSet.getString(3));
-                result_account.setLastName(resultSet.getString(4));
-                result_account.setStatus(resultSet.getString(5));
-                result_account.setAddress1(resultSet.getString(6));
-                result_account.setAddress2(resultSet.getString(7));
-                result_account.setCity(resultSet.getString(8));
-                result_account.setState(resultSet.getString(9));
-                result_account.setZip(resultSet.getString(10));
-                result_account.setCountry(resultSet.getString(11));
-                result_account.setPhone(resultSet.getString(12));
-                result_account.setLanguagePreference(resultSet.getString(13));
-                result_account.setFavouriteCategoryId(resultSet.getString(14));
-                result_account.setListOption(resultSet.getInt(15) == 1);
-                result_account.setBannerOption(resultSet.getInt(16) == 1);
-                result_account.setBannerName(resultSet.getString(17));
-            }
-            DBUtil.closeResultSet(resultSet);
-            DBUtil.closePreparedStatement(pStatement);
-            DBUtil.closeConnection(connection);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+//        String hsql = "from Account,where username=? and password=?";
+//        Session sessionHibernate =  HibernateUtil.getSession();
+//        sessionHibernate.beginTransaction();//开始事物；
+//        Query query = sessionHibernate.createQuery(hsql);
+//        query.setString(0, username);
+//        query.setString(1, password);
+//        ArrayList<User> result = (ArrayList<User>)query.list();
+//        sessionHibernate.getTransaction().commit();//结束事务
+//        if(result.size()>0){
+//            return "ok";
+//        }else{
+//            return "failed";
+//        }
         return result_account;
     }
 

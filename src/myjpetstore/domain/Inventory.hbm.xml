@@ -2,11 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
 <hibernate-mapping>
-        <class name="myjpetstore.domain.Sequence" table="sequence" lazy="false">
-                <id name="name" type="text" column="name">
+        <class name="myjpetstore.domain.Inventory" table="inventory" lazy="false">
+                <id name="itemid" type="text" column="itemid">
                         <generator class="assigned"/>
                 </id>
-                <property name="nextId" type="text" column="nextid"/>
+                <property name="qty" type="int" column="qty" not-null="true" />
         </class>
 </hibernate-mapping>

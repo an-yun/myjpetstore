@@ -3,10 +3,10 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-        <class name="myjpetstore.domain.Sequence" table="sequence" lazy="false">
-                <id name="name" type="text" column="name">
+        <class name="myjpetstore.domain.Signon" table="signon" lazy="false">
+                <id name="username" type="text" column="username">
                         <generator class="assigned"/>
                 </id>
-                <property name="nextId" type="text" column="nextid"/>
+                <property name="password" type="text" column="password"/>
         </class>
 </hibernate-mapping>

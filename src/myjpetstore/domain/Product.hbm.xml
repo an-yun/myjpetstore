@@ -4,10 +4,12 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-        <class name="myjpetstore.domain.Log" table="log" lazy="false">
-                <id name="time" type="text" column="time">
+        <class name="myjpetstore.domain.Product" table="product" lazy="false">
+                <id name="productId" type="text" column="productid">
                         <generator class="assigned"/>
                 </id>
-                <property name="event" type="text" column="event"/>
+                <property name="categoryId" type="text" column="category"/>
+                <property name="name" type="text" column="name"/>
+                <property name="description" type="text" column="descn"/>
         </class>
 </hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name="myjpetstore.domain.Profile" table="profile" lazy="false">
+                <id name="userid" type="text" column="userid">
+                        <generator class="assigned"/>
+                </id>
+                <property name="langpref" type="text" column="langpref"/>
+                <property name="favcategory" type="text" column="favcategory"/>
+                <property name="mylistopt" type="int" column="mylistopt"/>
+                <property name="banneropt" type="int" column="banneropt"/>
+        </class>
+</hibernate-mapping>
